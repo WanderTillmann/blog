@@ -11,6 +11,8 @@
 |
 */
 
+use Illuminate\Support\Facades\Route;
+
 Route::get('/post/{post}', 'Site\PostController@show')->name('posts.public.single');
 Route::get('/', 'Site\PostController@index')->name('welcome');
 

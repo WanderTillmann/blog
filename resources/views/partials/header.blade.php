@@ -11,7 +11,7 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('welcome')}}">Home</a>
+                    <a class="nav-link" href="{{ route('welcome') }}">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="about.html">About</a>
@@ -20,7 +20,7 @@
                     <a class="nav-link" href="post.html">Sample Post</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="contact.html">Contact</a>
+                    <a class="nav-link" href="{{ url('/contato') }}">Contact</a>
                 </li>
             </ul>
         </div>
@@ -35,8 +35,8 @@
             <div class="col-lg-8 col-md-10 mx-auto">
                 <div class="site-heading">
                     @section('header')
-                    <h1>Laravel Blade</h1>
-                    <span class="subheading">Novidades de Tecnologia</span>
+                        <h1>Laravel Blade</h1>
+                        <span class="subheading">Novidades de Tecnologia</span>
                     @show
                 </div>
             </div>
@@ -54,6 +54,6 @@
             <div class="alert-error text-center col-md-12" style="margin-bottom:20px;">
                 {{ session('error') }}
             </div>
-        @endif        
+        @endif
     </div>
 </div>
