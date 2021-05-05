@@ -22,6 +22,8 @@ Route::post('ratings/{post}', 'Site\RatingController@store')->name('ratings.stor
 
 Route::group(['prefix' => 'admin'], function () {
     Route::resource('posts', 'Admin\AdminController');
+    Route::get('trash_post', 'Admin\AdminController@trash')->name('trashpost');
+    Route::post('trashrestore/{id}', 'Admin\AdminController@trashrestore')->name('trashrestore');
 });
 
 Route::get('/contato', function () {

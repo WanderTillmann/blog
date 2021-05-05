@@ -7,6 +7,14 @@
 @section('content')
     <div class="container">
         <div class="row">
+            <div class="col-12">
+                <span>
+                    <a href="{{ route('trashpost') }}" data-toggle="tooltip" title="Lixeira de Postagens">
+                        <i class="fa fa-trash float-right">
+                        </i>
+                    </a>
+                </span>
+            </div>
             <div class="col-md-12 col-lg-12 mx-auto">
                 <table class="table table-striped">
                     <thead>

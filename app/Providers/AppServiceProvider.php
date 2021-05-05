@@ -2,9 +2,12 @@
 
 namespace App\Providers;
 
+use App\Observers\PostObserver;
+use App\Post;
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
-use Blade;
+
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -35,6 +38,7 @@ class AppServiceProvider extends ServiceProvider
             return $posttype == $c;
         });
 
+        Post::observe(PostObserver::class);
         Schema::defaultStringLength(191);
     }
 }

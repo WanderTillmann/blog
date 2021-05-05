@@ -15,13 +15,12 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::orderby('created_at', 'desc')
-            ->with('categories')
-            ->whereHas('details', function ($query) {
-                $query->where('status', 'publicado')
-                    ->where('visibility', 'publico');
-            })
+        $posts = Post::withCount('comments')
             ->paginate(5);
+
+        if (request()->query('categories')) {
+            $posts->load('categories');
+        }
         return view('news.index')->with([
             'posts' => $posts
         ]);
