@@ -10,6 +10,43 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Post extends Model
 {
+  /**
+   * Usa Soft deletes
+   */
+  use SoftDeletes;
+
+  /* 
+   *  Libera a Definicao  de dados em massa 
+   * 
+   */
+  protected $fillable = ['title', 'content'];
+
+  /**
+   * define os campos do tipo data
+   */
+  protected $date = ['deleted_at'];
+
+  /**
+   *  Converte tipos de dados
+   */
+  protected $casts = [
+    'approved' => 'boolean',
+    'created_at' => 'datetime:d/m/Y',
+    'updated_at' => 'datetime:d/m/Y'
+  ];
+
+  /**
+   * Relaciona os eventos ao model
+   */
+  protected $dispatchesEvents = [
+    'created' => PostCreated::class,
+  ];
+
+  /**
+   * Anexa campo criado via assessor a serializacao
+   */
+  protected $appends = ['summary_content'];
+
 
   protected static function boot()
   {
@@ -21,13 +58,6 @@ class Post extends Model
     static::addGlobalScope(new VisibleScope);
   }
 
-  use SoftDeletes;
-  protected $fillable = ['title', 'content'];
-  protected $date = ['deleted_at'];
-
-  protected $dispatchesEvents = [
-    'created' => PostCreated::class,
-  ];
 
   /**
    * Mapeia o relacionamento com o model Details
@@ -96,5 +126,15 @@ class Post extends Model
   public function scopeHasCategories($query)
   {
     return $query->whereHas('categories');
+  }
+
+  // public function getContentAttribute($value)
+  // {
+  //   return mb_strimwidth($value, 0, 30, "...");
+  // }
+
+  public function getSummaryContentAttribute()
+  {
+    return mb_strimwidth($this->content, 0, 30, "...");
   }
 }

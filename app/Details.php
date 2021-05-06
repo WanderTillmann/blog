@@ -6,7 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Details extends Model
 {
-
+    /*
+     *  Libera a Definicao  de dados em massa 
+     * 
+     */
     protected $fillable = ['status', 'visibility'];
 
     /**

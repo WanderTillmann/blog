@@ -8,6 +8,9 @@ use App\Post;
 
 class CommentController extends Controller
 {
+  /**
+   * Persiste o comentario no banco de dados
+   */
   public function store($postId, Request $request)
   {
     $post = Post::find($postId);

@@ -6,8 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Rating extends Model
 {
-
-    protected $fillable =['value'];
+    /*
+     *  Libera a Definicao  de dados em massa 
+     * 
+     */
+    protected $fillable = ['value'];
 
     /**
      *  Metodo de relacao com post ou user

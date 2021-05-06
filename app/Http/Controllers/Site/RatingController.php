@@ -8,6 +8,9 @@ use App\Http\Controllers\Controller;
 
 class RatingController extends Controller
 {
+    /**
+     * Persiste A avaliacao no banco de dados
+     */
     public function store(Post $post, Request $request)
     {
         $post->ratings()->create($request->all());
